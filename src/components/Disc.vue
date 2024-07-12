@@ -5,10 +5,8 @@ import {useVinylStore} from "@/data/Store.ts";
 defineProps({
     title:String,
     img:String,
-    insideColor:String,
     outsideColor:String,
     selectedVinyl:String,
-    discPlayer:String
 })
 
 const store = useVinylStore()
@@ -49,7 +47,7 @@ const store = useVinylStore()
   height: 200px;
   width: 200px;
   border-radius: 50%;
-  background-color: v-bind(outsideColor);
+  background-color: rgb(v-bind(outsideColor));
   z-index: -1;
 }
 
@@ -77,14 +75,7 @@ const store = useVinylStore()
     height: 45%;
     width: 45%;
     border-radius: 50%;
-    background-color: v-bind(insideColor);
     overflow: hidden;
-}
-
-#disc img {
-    height: 80%;
-    width: 80%;
-    border-radius: 50%;
 }
 
 @keyframes hoverAlbum {

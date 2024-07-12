@@ -18,8 +18,11 @@ onUpdated(()=>{
   <div id="app">
     <VinylList />
       <div>
-        <VinylPlayer />
-        <Spotify v-if="store.selectedVinyl !== null" />
+        <div v-if="store.selectedVinyl !== null">
+          <VinylPlayer />
+          <Spotify />
+        </div>
+
         <VinylTable v-else />
       </div>
   </div>
