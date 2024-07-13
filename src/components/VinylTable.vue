@@ -3,11 +3,10 @@ import vinyl from "@/data/vinyl.json"
 import {ref} from "vue";
 
 const vinylList = ref(vinyl)
-console.log(vinylList.value)
 </script>
 
 <template>
-    <div>
+    <div class="specialFont">
         <h3> This is a list a all the vinyl lp's I own</h3>
         <table>
             <tbody>

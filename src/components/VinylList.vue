@@ -26,6 +26,6 @@ const vinylList = ref(vinyl)
     #vinylList {
         display: flex;
         flex-wrap: wrap;
-        width: 75%;
+        width: 100%;
     }
 </style>

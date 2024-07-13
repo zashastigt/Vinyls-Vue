@@ -10,6 +10,7 @@ const outsideColor = computed(() => vinyl[store.selectedVinyl].outsideColor)
 
 <template>
   <div id="player">
+    <div class="playerButton" @click="store.selectedVinyl = null">X</div>
     <div id="plate">
       <div id="record">
         <img id="recordImg" alt="album art" :src="'/Vinyl-Vue/record.png'">
@@ -19,28 +20,42 @@ const outsideColor = computed(() => vinyl[store.selectedVinyl].outsideColor)
         </div>
       </div>
     </div>
-      <div id="armImg">
-        <img id="recordImg" alt="album art" :src="'/Vinyl-Vue/arm.png'">
-      </div>
+    <div id="armImg">
+      <img id="recordImg" alt="album art" :src="'/Vinyl-Vue/arm.png'">
+    </div>
   </div>
 </template>
 
 <style scoped>
 #player {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: fit-content;
-  width: fit-content;
+  justify-content: flex-start;
+  width: 80%;
+  aspect-ratio: 1.25/1;
   background-color: red;
+}
+
+.playerButton {
+  position: absolute;
+  bottom: 2%;
+  left: 2%;
+  background-color: #111;
+  color: #eee;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
 }
 
 #plate {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 350px;
-  width: 350px;
+  height: 100%;
+  width: 80%;
 }
 
 #record {
@@ -48,8 +63,8 @@ const outsideColor = computed(() => vinyl[store.selectedVinyl].outsideColor)
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 300px;
-  width: 300px;
+  height: 90%;
+  aspect-ratio: 1/1;
   animation: rotation 2.5s infinite linear;
 }
 
@@ -61,7 +76,6 @@ const outsideColor = computed(() => vinyl[store.selectedVinyl].outsideColor)
   border-radius: 50%;
   height: 100%;
   width: 100%;
-
 }
 
 #recordImg {
@@ -91,8 +105,13 @@ const outsideColor = computed(() => vinyl[store.selectedVinyl].outsideColor)
 }
 
 #armImg {
+  position: absolute;
+  top: 4%;
+  right: 2%;
+  height: 70%;
+  aspect-ratio: 1/1;
   transform-origin: top center;
-  /*transform: rotate(30deg);*/
+  transform: rotate(-10deg);
 }
 
 @keyframes rotation {

@@ -14,8 +14,8 @@ const store = useVinylStore()
 
 <template>
     <div>
-      <button @click="store.selectedVinyl = null">close</button>
       <iframe
+        style="border-radius:20px"
         :src="vinylList[store.selectedVinyl].spotify"
         width="100%" height="352" frameBorder="0" allowfullscreen=""
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -25,7 +25,7 @@ const store = useVinylStore()
 </template>
 
 <style scoped>
-iframe {
-  background-color: #242424;
-}
+  div {
+    width: 80%;
+  }
 </style>

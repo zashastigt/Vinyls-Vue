@@ -7,22 +7,19 @@ import {useVinylStore} from "@/data/Store.ts";
 import VinylPlayer from "@/components/VinylPlayer.vue";
 
 const store = useVinylStore()
-
-onUpdated(()=>{
-  console.log(store.selectedVinyl)
-})
-
 </script>
 
 <template>
   <div id="app">
-    <VinylList />
-      <div>
-        <div v-if="store.selectedVinyl !== null">
+    <div id="leftSide">
+      <VinylList />
+    </div>
+
+      <div id="rightSide">
+        <div id="albumSelected" v-if="store.selectedVinyl !== null">
           <VinylPlayer />
           <Spotify />
         </div>
-
         <VinylTable v-else />
       </div>
   </div>
@@ -32,5 +29,21 @@ onUpdated(()=>{
 <style scoped>
 #app {
   display: flex;
+  background-color: #242424;
+}
+
+#leftSide {
+  width: 60%;
+}
+
+#rightSide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+}
+
+#albumSelected {
+  width: 100%;
 }
 </style>
