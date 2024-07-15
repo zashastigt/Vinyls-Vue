@@ -24,9 +24,119 @@ const outsideColor = computed(() => vinyl[store.selectedVinyl].outsideColor)
       <img id="recordImg" alt="album art" :src="'/Vinyl-Vue/arm.png'">
     </div>
   </div>
+  <div class="container">
+    <div class="cube">
+      <div class="face top">
+        <div class="plate">
+          <div class="circle">circle</div>
+          <div class="curve">side</div>
+        </div>
+      </div>
+      <div class="face side"></div>
+      <div class="face front"></div>
+    </div>
+<!--    <div class="plate">-->
+<!--      <div class="circle">circle</div>-->
+<!--      <div class="curve">side</div>-->
+<!--    </div>-->
+  </div>
 </template>
 
 <style scoped>
+
+.container {
+  position: relative;
+  height: 300px;
+  aspect-ratio: 1/1;
+  perspective: 500px;
+  margin: 100px;
+}
+
+.plate {
+  height: 100%;
+  aspect-ratio: 1/1;
+}
+
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  height: 90%;
+  aspect-ratio: 1/1;
+  background-color: green;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  font-size: 2rem;
+  opacity: 0.5;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+}
+
+.curve {
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  background-color: blue;
+  border-radius: 0 0 50%/100px 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  font-size: 2rem;
+  opacity: 0.5;
+}
+
+.cube {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: rotate3d(-1, -1, 0, 45deg);
+}
+
+
+.face {
+  background: red;
+  position: absolute;
+  opacity: 0.5;
+}
+
+.front {
+  width: 120%;
+  height: 20px;
+  transform: rotateY(-90deg) translateX(41.65%) rotateY(90deg);
+}
+
+.side {
+  width: 100%;
+  height: 20px;
+  transform: translateX(70%) rotateY(90deg);
+}
+
+.top {
+  height: 100%;
+  aspect-ratio: 1.2/1;
+  transform: translateY(-50%) rotateX(90deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 #player {
   position: relative;
   display: flex;
@@ -34,7 +144,8 @@ const outsideColor = computed(() => vinyl[store.selectedVinyl].outsideColor)
   justify-content: flex-start;
   width: 80%;
   aspect-ratio: 1.25/1;
-  background-color: red;
+  background-color: #363636;
+  border-radius: 5px;
 }
 
 .playerButton {
