@@ -15,10 +15,10 @@ const store = useVinylStore()
 
 <template>
   <div id="album" @click="store.selectedVinyl = title">
-    <img alt="album art" :src="'/Vinyl-Vue/albumArt/' + img">
+    <img alt="album art" :src="'./albumArt/' + img">
     <div id="disc">
       <div id="discInside">
-        <img alt="album art" :src="'/Vinyl-Vue/albumArt/' + img">
+        <img alt="album art" :src="'./albumArt/' + img">
       </div>
     </div>
   </div>

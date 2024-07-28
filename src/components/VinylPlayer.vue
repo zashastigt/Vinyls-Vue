@@ -13,15 +13,15 @@ const outsideColor = computed(() => vinyl[store.selectedVinyl].outsideColor)
     <div class="playerButton" @click="store.selectedVinyl = null">X</div>
     <div id="plate">
       <div id="record">
-        <img id="recordImg" alt="album art" :src="'/Vinyl-Vue/record.png'">
+        <img id="recordImg" alt="album art" :src="'./record.png'">
         <div id="recordColor">
-          <img id="albumArt" alt="album art" :src="'/Vinyl-Vue/albumArt/' + vinyl[store.selectedVinyl].img">
+          <img id="albumArt" alt="album art" :src="'./albumArt/' + vinyl[store.selectedVinyl].img">
           <div id="discDot"></div>
         </div>
       </div>
     </div>
     <div id="armImg">
-      <img id="recordImg" alt="album art" :src="'/Vinyl-Vue/arm.png'">
+      <img id="recordImg" alt="album art" :src="'./arm.png'">
     </div>
   </div>
 </template>

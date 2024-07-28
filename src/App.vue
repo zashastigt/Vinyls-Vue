@@ -2,7 +2,6 @@
 import VinylList from "@/components/VinylList.vue";
 import VinylTable from "@/components/VinylTable.vue";
 import Spotify from "@/components/Spotify.vue";
-import {onUpdated, ref} from "vue";
 import {useVinylStore} from "@/data/Store.ts";
 import VinylPlayer from "@/components/VinylPlayer.vue";
 
