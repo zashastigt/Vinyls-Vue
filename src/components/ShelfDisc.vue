@@ -26,43 +26,48 @@ const store = useVinylStore()
 
 <style scoped>
 #album {
-  position: relative;
-  height: 200px;
-  width: 200px;
-  margin: 10px;
+    position: relative;
+    height: 200px;
+    width: 200px;
+    margin: 0 -80px;
+    transform-style: preserve-3d;
+    transform: rotateX(-15deg) rotateY(-50deg);
 }
 
 #album img {
-  height: 100%;
-  width: 100%;
+    height: 100%;
+    width: 100%;
+    
 }
 
 #disc {
-  position: absolute;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  height: 200px;
-  width: 200px;
-  border-radius: 50%;
-  background-color: rgb(v-bind(outsideColor));
-  z-index: -1;
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background-color: rgb(v-bind(outsideColor));
+    z-index: -1;
 }
 
 #album:hover img {
-  transform: scale(1.1);
-  z-index: 2;
-  transition: 0.5s;
+    transform: scale(1.1);
+    z-index: 2;
+    transition: 0.5s;
 }
 
 #album:hover {
-  z-index: 2;
+    animation-name: hoverAlbum;
+    animation-duration: 0.7s;
+    animation-fill-mode: forwards;
 }
 
 #album:hover #disc {
-    animation-name: hoverAlbum;
+    animation-name: selectDisc;
     animation-duration: 0.7s;
     animation-fill-mode: forwards;
     z-index: -1;
@@ -79,28 +84,23 @@ const store = useVinylStore()
 }
 
 @keyframes hoverAlbum {
-    0% {
-        transform: translateX(0) rotate(0) scale(1);
+    50% {
+        transform: translateX(100px) translateY(50px) rotateX(-15deg) rotateY(-60deg);
     }
 
     100% {
-        transform: translateX(100px) rotate(360deg) scale(1.1);
+        transform: translateX(-100px) translateY(50px) rotateX(0deg) rotateY(0deg) scale(1.1);
+        z-index: 1;
     }
 }
 
 @keyframes selectDisc {
-    0% {
+    75% {
         transform: translateX(0) rotate(0);
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 1;
     }
 
     100% {
-        transform: translateX(200px) rotate(360deg);
-        opacity: 0;
+        transform: translateX(100px) rotate(360deg) scale(1.1);
     }
 }
 </style>

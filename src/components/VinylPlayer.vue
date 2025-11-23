@@ -15,7 +15,7 @@ const outsideColor = computed(() => vinyl[store.selectedVinyl].outsideColor)
       <div id="record">
         <img id="recordImg" alt="album art" :src="'./record.png'">
         <div id="recordColor">
-          <img id="albumArt" alt="album art" :src="'./albumArt/' + vinyl[store.selectedVinyl].img">
+          <img id="albumArt" alt="album art" :src="`./albumArt/${vinyl[store.selectedVinyl].img}`">
           <div id="discDot"></div>
         </div>
       </div>
@@ -32,7 +32,7 @@ const outsideColor = computed(() => vinyl[store.selectedVinyl].outsideColor)
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 80%;
+  width: 100%;
   aspect-ratio: 1.25/1;
   background-color: #363636;
   border-radius: 5px;
