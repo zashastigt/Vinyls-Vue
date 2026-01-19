@@ -6,17 +6,22 @@ import {useVinylStore} from "@/data/Store.ts";
 import VinylPlayer from "@/components/VinylPlayer.vue";
 import { ref } from "vue";
 import VinylShelf from "./components/VinylShelf.vue";
+import VinylPlank from "./components/VinylPlank.vue";
 
 const store = useVinylStore()
 
-const type = ref(false)
+const type = ref(1)
 </script>
 
 <template>
   <div id="app">
     <div id="leftSide">
-      <VinylList v-if="!type" />
-      <VinylShelf v-if="type" />
+      <button @click="type = 1">1</button>
+      <button @click="type = 2">2</button>
+      <button @click="type = 3">3</button>
+      <VinylList v-if="type === 1" />
+      <VinylShelf v-if="type === 2" />
+      <VinylPlank v-if="type === 3" />
     </div>
     <div id="rightSide">
       <div id="albumSelected" v-if="store.selectedVinyl !== null">
