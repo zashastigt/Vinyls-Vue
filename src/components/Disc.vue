@@ -11,16 +11,25 @@ defineProps({
 
 const store = useVinylStore()
 
+const albumHoverState = ref(false)
+const animationState = ref('normal')
+
 </script>
 
 <template>
-  <div id="album" @click="store.selectedVinyl = title">
-    <img alt="album art" :src="`./albumArt/${img}`">
+  <div
+    id="album"
+    :class="{albumHover: albumHoverState, albumUnhover: !albumHoverState}"
+    @mouseover="albumHoverState = true"
+    @mouseleave="albumHoverState = false"
+    @click="store.selectedVinyl = title"
+  >
     <div id="disc">
       <div id="discInside">
         <img alt="album art" :src="`./albumArt/${img}`">
       </div>
     </div>
+    <img alt="album art" :src="`./albumArt/${img}`">
   </div>
 </template>
 
@@ -30,11 +39,10 @@ const store = useVinylStore()
   height: 200px;
   width: 200px;
   margin: 10px;
-}
-
-#album img {
-  height: 100%;
-  width: 100%;
+  & > img {
+    height: 100%;
+    width: 100%;
+  }
 }
 
 #disc {
@@ -48,24 +56,10 @@ const store = useVinylStore()
   width: 200px;
   border-radius: 50%;
   background-color: rgb(v-bind(outsideColor));
-  z-index: -1;
-}
-
-#album:hover img {
-  transform: scale(1.1);
-  z-index: 2;
-  transition: 0.5s;
-}
-
-#album:hover {
-  z-index: 2;
-}
-
-#album:hover #disc {
-    animation-name: hoverAlbum;
-    animation-duration: 0.7s;
-    animation-fill-mode: forwards;
-    z-index: -1;
+    & img {
+    height: 100%;
+    width: 100%;
+  }
 }
 
 #discInside {
@@ -78,14 +72,84 @@ const store = useVinylStore()
     overflow: hidden;
 }
 
-@keyframes hoverAlbum {
-    0% {
-        transform: translateX(0) rotate(0) scale(1);
+.albumHover {
+  animation: hoverAlbum 0.5s ease forwards;
+    & > img {
+      animation: hoverImg 0.5s ease forwards;
     }
+    & #disc {
+      animation: hoverDisc 0.5s ease forwards;
+    }
+}
 
-    100% {
-        transform: translateX(100px) rotate(360deg) scale(1.1);
+.albumUnhover {
+  animation: unhoverAlbum 0.5s ease forwards;
+    & > img {
+      animation: unhoverImg 0.5s ease forwards;
     }
+    & #disc {
+      animation: unhoverDisc 0.5s ease forwards;
+    }
+}
+
+@keyframes hoverAlbum {
+  0% {
+    z-index: 0;
+  }
+  99% {
+    z-index: 1;
+  }
+  100% {
+    z-index: 1;
+  }
+}
+
+@keyframes unhoverAlbum {
+  0% {
+    z-index: 1;
+  }
+  99% {
+    z-index: 1;
+  }
+  100% {
+    z-index: 0;
+  }
+}
+
+@keyframes hoverImg {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes unhoverImg {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes hoverDisc {
+  0% {
+    transform: translateX(0) rotate(0deg) scale(1);
+  }
+  100% {
+    transform: translateX(100px) rotate(360deg) scale(1.1);
+  }
+}
+
+@keyframes unhoverDisc {
+  0% {
+    transform: translateX(100px) rotate(360deg) scale(1.1);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg) scale(1);
+  }
 }
 
 @keyframes selectDisc {
