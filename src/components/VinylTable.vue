@@ -6,34 +6,33 @@ const vinylList = ref(vinyl)
 </script>
 
 <template>
-    <div class="specialFont">
-        <h3> This is a list a all the vinyl lp's I own</h3>
-        <table>
-            <tbody>
-            <tr>
-                <th>Album</th>
-                <th>Band/Artist</th>
-            </tr>
-            <tr v-for="vinyl in vinylList">
-                <td>{{vinyl.title}}</td>
-                <td>{{vinyl.band}}</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+  <div class="specialFont">
+    <h3> This is a list a all the vinyl lp's I own</h3>
+    <table>
+      <tbody>
+        <tr>
+          <th>Album</th>
+          <th>Band/Artist</th>
+        </tr>
+        <tr v-for="vinyl in vinylList">
+          <td>{{vinyl.title}}</td>
+          <td>{{vinyl.band}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <style scoped>
-
 div {
-    color: #eee;
+  color: #eee;
 }
 
 table td, table th {
-    border-bottom: #666 solid 1px;
+  border-bottom: #666 solid 1px;
 }
 
 .specialFont {
-    font-family: "Ink Free", serif;
+  font-family: "Ink Free", serif;
 }
 </style>

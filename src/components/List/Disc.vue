@@ -3,10 +3,10 @@ import {ref} from "vue";
 import {useVinylStore} from "@/data/Store.ts";
 
 defineProps({
-    title:String,
-    img:String,
-    outsideColor:String,
-    selectedVinyl:String,
+  title:String,
+  img:String,
+  outsideColor:String,
+  selectedVinyl:String,
 })
 
 const store = useVinylStore()

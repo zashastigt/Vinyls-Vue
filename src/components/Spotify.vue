@@ -13,15 +13,15 @@ const store = useVinylStore()
 </script>
 
 <template>
-    <div>
-      <iframe
-        style="border-radius:20px"
-        :src="vinylList[store.selectedVinyl].spotify"
-        width="100%" height="400" frameBorder="0" allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy">
-      </iframe>
-    </div>
+  <div>
+    <iframe
+      style="border-radius:20px"
+      :src="vinylList[store.selectedVinyl].spotify"
+      width="100%" height="400" frameBorder="0" allowfullscreen=""
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+  </div>
 </template>
 
 <style scoped>
