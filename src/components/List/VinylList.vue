@@ -1,7 +1,7 @@
 <script setup>
 import {onUpdated, ref} from "vue";
 import vinyl from "@/data/vinyl.json";
-import Disc from "@/components/Disc.vue";
+import Disc from "./Disc.vue";
 
 defineProps({
     selectedVinyl:String,
@@ -12,7 +12,6 @@ const vinylList = ref(vinyl)
 
 <template>
     <div id="vinylList">
-        <div id="plank"></div>
         <Disc
           v-for="vinyl in vinylList"
           :img="vinyl.img"
@@ -20,7 +19,6 @@ const vinylList = ref(vinyl)
           :outside-color="vinyl.outsideColor"
           :selected-vinyl="selectedVinyl"
         />
-        
     </div>
 </template>
 
@@ -29,11 +27,5 @@ const vinylList = ref(vinyl)
         display: flex;
         flex-wrap: wrap;
         width: 100%;
-    }
-
-    #plank {
-        height: 30px;
-        width: 100%;
-        background-color: aqua;
     }
 </style>
