@@ -13,18 +13,22 @@ const store = useVinylStore()
 
 const albumHoverState = ref(false)
 const animationState = ref('normal')
+const hoveredBefore = ref(false)
 
 </script>
 
 <template>
   <div
     id="album"
-    :class="{albumHover: albumHoverState, albumUnhover: !albumHoverState}"
-    @mouseover="albumHoverState = true"
+    :class="{
+      albumHover: albumHoverState,
+      albumUnhover: !albumHoverState && hoveredBefore,
+    }"
+    @mouseover="albumHoverState = true, hoveredBefore = true"
     @mouseleave="albumHoverState = false"
     @click="store.selectedVinyl = title"
   >
-    <div id="disc">
+    <div id="disc" :class="{ selectedAnimation: store.selectedVinyl === title }">
       <div id="discInside">
         <img alt="album art" :src="`./albumArt/${img}`">
       </div>
@@ -56,6 +60,7 @@ const animationState = ref('normal')
   width: 200px;
   border-radius: 50%;
   background-color: rgb(v-bind(outsideColor));
+  z-index: -1;
     & img {
     height: 100%;
     width: 100%;
@@ -92,15 +97,19 @@ const animationState = ref('normal')
     }
 }
 
+.selectedAnimation {
+  animation: selectDisc 0.5s ease forwards !important; 
+}
+
 @keyframes hoverAlbum {
   0% {
-    z-index: 0;
+    z-index: 1;
   }
   99% {
-    z-index: 1;
+    z-index: 2;
   }
   100% {
-    z-index: 1;
+    z-index: 2;
   }
 }
 
@@ -165,6 +174,7 @@ const animationState = ref('normal')
     100% {
         transform: translateX(200px) rotate(360deg);
         opacity: 0;
+        display: none;
     }
 }
 </style>
